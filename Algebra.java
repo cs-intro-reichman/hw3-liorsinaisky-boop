@@ -22,6 +22,7 @@ public class Algebra {
         System.out.println(sqrt(36)); // = 6
         System.out.println(sqrt(263169)); // = 513
         System.out.println(sqrt(76123)); // = 275
+        System.out.println("hey");
     }
 
     // Returns x1 + x2
