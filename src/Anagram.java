@@ -3,11 +3,9 @@
 public class Anagram {
 
     public static void main(String args[]) {
-        // Tests the isAnagram function.
         String str = "Hello World";
+        /* Tests the isAnagram function.
         System.out.println(preProcess(str));
-        // System.out.println(isAnagram("cat", "cat"));  // true
-        //System.out.println(preProcess("William Shakespeare")+" "+ preProcess("I am a weakish speller"));
         System.out.println(isAnagram("William Shakespeare", "I am a weakish speller")); // true
         System.out.println(isAnagram("Madam Curie", "Radium came")); // true
         System.out.println(isAnagram("Tom Marvolo Riddle", "I am Lord Voldemort")); // true
@@ -31,9 +29,9 @@ public class Anagram {
             }
         }
         System.out.println(pass ? "test passed" : "test Failed");
-    }
-
-    // Returns true if the two given strings are anagrams, false otherwise.
+    }*/
+        // Returns true if the two given strings are anagrams, false otherwise.
+	}
     public static boolean isAnagram(String str1, String str2) {
         String str3 = preProcess(str1);
         String str4 = preProcess(str2);
@@ -89,15 +87,15 @@ public class Anagram {
     // Returns a random anagram of the given string. The random anagram consists of the same
     // characters as the given string, re-arranged in a random order. 
     public static String randomAnagram(String str) {
-		int length = str.length();
-        int random ;
+        int length = str.length();
+        int random;
         String stri = "";
         char c;
         for (int i = 0; i < length; i++) {
             random = (int) (Math.random() * str.length());
             c = str.charAt(random);
-            str = str.substring(0,random) + str.substring(random+1);
-			stri += c;
+            str = str.substring(0, random) + str.substring(random + 1);
+            stri += c;
         }
         return stri;
     }
