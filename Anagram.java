@@ -3,7 +3,9 @@
 public class Anagram {
 
     public static void main(String args[]) {
-        String str = "Hello World";
+        String str = "";
+        String strr = "";
+        System.out.println(isAnagram(str, strr));
         /* Tests the isAnagram function.
         System.out.println(preProcess(str));
         System.out.println(isAnagram("William Shakespeare", "I am a weakish speller")); // true
@@ -58,6 +60,9 @@ public class Anagram {
                 }
             }
 
+        }
+        if(str1.length()==0 && str2.length()==0){
+        return true;
         }
         return isAnagram;
     }
