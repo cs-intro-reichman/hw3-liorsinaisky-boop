@@ -6,6 +6,8 @@
 public class Algebra {
 
     public static void main(String args[]) {
+
+
         // Tests some of the operations
         /* */ System.out.println(plus(2, 3));   // 2 + 3 = 5
         System.out.println(minus(7, 2));  // 7 - 2 = 5
@@ -22,14 +24,21 @@ public class Algebra {
         System.out.println(sqrt(36)); // = 6
         System.out.println(sqrt(263169)); // = 513
         System.out.println(sqrt(76123)); // = 275
-        System.out.println("hey");
+
     }
 
     // Returns x1 + x2
     public static int plus(int x1, int x2) {
         int sum = 0;
-        for (int i = 0; i <= x1; i++) {
-            sum = x2++;
+        if (x1 < 0 && x2 < 0) {
+            for (int i = 0; i >= x1; i--) {
+                sum = x2--;
+            }
+        } else {
+            for (int i = 0; i <= x1; i++) {
+                sum = x2++;
+            }
+
         }
         return sum;
     }
@@ -87,8 +96,19 @@ public class Algebra {
     // Returns x^n (for n >= 0)
     public static int pow(int x, int n) {
         int sum = x;
-        if (x > 0) {
+        if (n==0){
+            return 1 ;
+        }
+        else if (x==0){
+            return 0 ;
+        }
+        else if (x > 0) {
             for (int i = 1; i < n; i++) {
+                sum = times(sum, x);
+            }
+        }
+            else if (x<0){
+                for (int i = 1; i < n; i++) {
                 sum = times(sum, x);
             }
         }
@@ -110,13 +130,16 @@ public class Algebra {
                     count++;
                 }
                 return count;
-            } else if (x1 < 0 && x2 < 0) {
-                while (num <= x2) {
-                    num = plus(num, x2);
+            } 
+            else if (x1 < 0 && x2 < 0) {
+                num = -num;
+                x2 = -x2;
+                while (num >= x2) {
+                    num = minus(num, x2);
                     count++;
                 }
                 return count;
-            } else if (x1 > 0 && x2 < 0) {
+            } else if (x1 > 0 && x2 < 0 ) {
                 while (num >= times(x2, -1)) {
                     num = plus(num, x2);
                     count--;
@@ -125,7 +148,8 @@ public class Algebra {
             } else if (x1 < 0 && x2 > 0) {
                 while (times(num, -1) >= x2) {
                     num = minus(times(num, -1), x2);
-                    count++;
+                    num = times(num,-1);
+                    count--;
                 }
                 return count;
             } else if (x1 == 0) {
@@ -148,12 +172,14 @@ public class Algebra {
         int i = 1;
         if (x > 0) {
             for (; i <= x; i++) {
-                if (((times(i, i)) - x) >= 0 ) {
+                if ((minus((times(i, i)),x) >= 0)) {
+                    if (minus(times(i,i), x)>0){
+                        return minus(i,1);
+                    }
                     return i;
                 }
             }
-        } 
-        else if (x == 0) {
+        } else if (x == 0) {
             return 0;
         } else {
             System.out.print("Invalid number try a number bigger then :");
