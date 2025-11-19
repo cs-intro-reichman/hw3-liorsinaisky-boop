@@ -4,64 +4,187 @@
 // return int values.
 
 public class Algebra {
-	public static void main(String args[]) {
-	    // Tests some of the operations
-	    System.out.println(plus(2,3));   // 2 + 3
-	    System.out.println(minus(7,2));  // 7 - 2
-   		System.out.println(minus(2,7));  // 2 - 7
- 		System.out.println(times(3,4));  // 3 * 4
-   		System.out.println(plus(2,times(4,2)));  // 2 + 4 * 2
-   		System.out.println(pow(5,3));      // 5^3
-   		System.out.println(pow(3,5));      // 3^5
-   		System.out.println(div(12,3));   // 12 / 3    
-   		System.out.println(div(5,5));    // 5 / 5  
-   		System.out.println(div(25,7));   // 25 / 7
-   		System.out.println(mod(25,7));   // 25 % 7
-   		System.out.println(mod(120,6));  // 120 % 6    
-   		System.out.println(sqrt(36));
-		System.out.println(sqrt(263169));
-   		System.out.println(sqrt(76123));
-	}  
 
-	// Returns x1 + x2
-	public static int plus(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
-	}
+    public static void main(String args[]) {
 
-	// Returns x1 - x2
-	public static int minus(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
-	}
 
-	// Returns x1 * x2
-	public static int times(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
-	}
+        // Tests some of the operations
+        /* */ System.out.println(plus(2, 3));   // 2 + 3 = 5
+        System.out.println(minus(7, 2));  // 7 - 2 = 5
+        System.out.println(minus(2, -7));  // 2 - -7 = 9
+        System.out.println(times(3, 4));  // 3 * 4 = 12
+        System.out.println(plus(2, times(4, 2)));  // 2 + 4 * 2 = 10 
+        System.out.println(pow(5, 3));      // 5^3 = 125
+        System.out.println(pow(3, 5));      // 3^5 = 243
+        System.out.println(div(12, 3));   // 12 / 3    = 4
+        System.out.println(div(-5, 5));    // 5 / 5  = 1
+        System.out.println(div(25, -7));   // 25 / 7 = 3
+        System.out.println(mod(25, 7));   // 25 % 7 = 4
+        System.out.println(mod(120, 6));  // 120 % 6  = 0 
+        System.out.println(sqrt(36)); // = 6
+        System.out.println(sqrt(263169)); // = 513
+        System.out.println(sqrt(76123)); // = 275
 
-	// Returns x^n (for n >= 0)
-	public static int pow(int x, int n) {
-		// Replace the following statement with your code
-		return 0;
-	}
+    }
 
-	// Returns the integer part of x1 / x2 
-	public static int div(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
-	}
+    // Returns x1 + x2
+    public static int plus(int x1, int x2) {
+        int sum = 0;
+        if (x1 < 0 && x2 < 0) {
+            for (int i = 0; i >= x1; i--) {
+                sum = x2--;
+            }
+        } else {
+            for (int i = 0; i <= x1; i++) {
+                sum = x2++;
+            }
 
-	// Returns x1 % x2
-	public static int mod(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
-	}	
+        }
+        return sum;
+    }
 
-	// Returns the integer part of sqrt(x) 
-	public static int sqrt(int x) {
-		// Replace the following statement with your code
-		return 0;
-	}	  	  
+    // Returns x1 - x2
+    public static int minus(int x1, int x2) {
+        int sum = 0;
+        if (x2 > 0) {
+            for (int i = 0; i <= x2; i++) {
+                sum = x1--;
+            }
+        } else {
+            for (int i = 1; i > x2; i--) {
+                sum = x1++;
+            }
+        }
+        return sum;
+    }
+
+    // Returns x1 * x2
+    public static int times(int x1, int x2) {
+        int sum = 0;
+        if ((x1 > 0 && x2 > 0)) {
+            for (int i = 0; i < x1; i++) {
+                for (int x = 0; x < x2; x++) {
+                    sum++;
+                }
+            }
+            return sum;
+        } else if ((x1 < 0 && x2 < 0)) {
+            for (int i = 0; i > x1; i--) {
+                for (int x = 0; x > x2; x--) {
+                    sum++;
+                }
+            }
+            return sum;
+        } else if ((x1 > 0 && x2 < 0)) {
+            for (int i = 0; i < x1; i++) {
+                for (int x = 0; x > x2; x--) {
+                    sum--;
+                }
+            }
+            return sum;
+        } else if ((x1 < 0 && x2 > 0)) {
+            for (int i = 0; i > x1; i--) {
+                for (int x = 0; x < x2; x++) {
+                    sum--;
+                }
+            }
+            return sum;
+        }
+        return sum;
+    }
+
+    // Returns x^n (for n >= 0)
+    public static int pow(int x, int n) {
+        int sum = x;
+        if (n==0){
+            return 1 ;
+        }
+        else if (x==0){
+            return 0 ;
+        }
+        else if (x > 0) {
+            for (int i = 1; i < n; i++) {
+                sum = times(sum, x);
+            }
+        }
+            else if (x<0){
+                for (int i = 1; i < n; i++) {
+                sum = times(sum, x);
+            }
+        }
+        return sum;
+    }
+
+    // Returns the integer part of x1 / x2 
+    public static int div(int x1, int x2) {
+        int count = 0;
+        int num = x1;
+        if (x2 == 0) {
+            System.out.print("Invalid number, try a number bigger then :");
+            return 0;
+
+        } else {
+            if (x1 > 0 && x2 > 0) {
+                while (num >= x2) {
+                    num = minus(num, x2);
+                    count++;
+                }
+                return count;
+            } 
+            else if (x1 < 0 && x2 < 0) {
+                num = -num;
+                x2 = -x2;
+                while (num >= x2) {
+                    num = minus(num, x2);
+                    count++;
+                }
+                return count;
+            } else if (x1 > 0 && x2 < 0 ) {
+                while (num >= times(x2, -1)) {
+                    num = plus(num, x2);
+                    count--;
+                }
+                return count;
+            } else if (x1 < 0 && x2 > 0) {
+                while (times(num, -1) >= x2) {
+                    num = minus(times(num, -1), x2);
+                    num = times(num,-1);
+                    count--;
+                }
+                return count;
+            } else if (x1 == 0) {
+                return count;
+            }
+        }
+        return count;
+    }
+
+    // Returns x1 % x2
+    public static int mod(int x1, int x2) {
+        int mult = div(x1, x2);
+        int res = x1 - (times(mult, x2));
+        return res;
+    }
+
+    // Returns the integer part of sqrt(x) 
+    public static int sqrt(int x) {
+        int num = 0;
+        int i = 1;
+        if (x > 0) {
+            for (; i <= x; i++) {
+                if ((minus((times(i, i)),x) >= 0)) {
+                    if (minus(times(i,i), x)>0){
+                        return minus(i,1);
+                    }
+                    return i;
+                }
+            }
+        } else if (x == 0) {
+            return 0;
+        } else {
+            System.out.print("Invalid number try a number bigger then :");
+            return 0;
+        }
+        return i;
+    }
 }
